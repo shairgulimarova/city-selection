@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState, useEffect, ChangeEvent } from 'react';
+import Link from 'next/link';
+
 import styles from './selection.module.css';
+import GoBackIcon from '../../public/goback-icon.svg';
+import SearchIcon from '../../public/search-icon.svg';
+import CheckmarkIcon from '../../public/checkmark-icon.svg';
+import Location from '../../public/location-icon.svg' 
 
 interface CityData {
   city: string;
@@ -13,6 +19,7 @@ interface CityData {
 
 export default function CitySelection() {
   const [cities, setCities] = useState<CityData[]>([]);
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
@@ -27,6 +34,10 @@ export default function CitySelection() {
     fetchCities();
   }, []);
 
+  const handleCitySelect = (cityData: CityData) => {
+    setSelectedCity(cityData.city);
+  };
+
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
@@ -38,7 +49,13 @@ export default function CitySelection() {
   return (
     <div className={styles.form}>
       <div className={styles.container}>
+        <div className={styles.goBack}>        
+          <Link href="/" className={styles.backBtn}>
+            <GoBackIcon />
+          </Link>
+        </div>
         <div className={styles.searchBar}>
+          {searchQuery === '' && <SearchIcon className={styles.searchIcon} />}
           <input
             type='text'
             placeholder='Введите название города'
@@ -48,13 +65,18 @@ export default function CitySelection() {
           />
         </div>
       </div>
-      
+
       <div>
         {searchQuery && (
           <ul className={styles.cityList}>
             {filteredCities.map((city) => (
-              <li key={city.fias_id} className={styles.cityItem}>
-                {city.city}
+              <li
+                key={city.fias_id}
+                onClick={() => handleCitySelect(city)}
+                className={`${styles.cityItem} ${selectedCity === city.city ? styles.selected : ''}`}>
+                <span><Location className={styles.locationIcon} /></span>
+                <span>{city.city}</span>
+                {selectedCity === city.city && <CheckmarkIcon className={styles.checkmarkIcon} />}
               </li>
             ))}
           </ul>
