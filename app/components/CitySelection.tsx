@@ -28,7 +28,7 @@ export default function CitySelection() {
         const { default: data } = await import('@/app/api/cities.json');
         setCities(data as CityData[]);
       } catch (error) {
-        console.error('Ошибка загрузки данных:', error);
+        console.error('Data loading error:', error);
       }
     }
     fetchCities();
@@ -50,15 +50,15 @@ export default function CitySelection() {
     <div className={styles.form}>
       <div className={styles.container}>
         <div className={styles.goBack}>        
-          <Link href="/" className={styles.backBtn}>
-            <GoBackIcon />
+          <Link href="/" >
+            <GoBackIcon className={styles.backBtn}/>
           </Link>
         </div>
         <div className={styles.searchBar}>
           {searchQuery === '' && <SearchIcon className={styles.searchIcon} />}
           <input
             type='text'
-            placeholder='Введите название города'
+            placeholder='Enter the city name'
             className={styles.cityInput}
             value={searchQuery}
             onChange={handleSearchChange}
