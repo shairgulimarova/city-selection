@@ -1,8 +1,7 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
-
-
-
+import { CityProvider } from './context/CityContext'; // Импортируйте CityProvider
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,10 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      
-      >
-        {children}
+      <body>
+        <CityProvider>
+          {children}
+        </CityProvider>
       </body>
     </html>
   );

@@ -1,13 +1,14 @@
-"use client";
-
+"use client"
 import React, { useState, useEffect, ChangeEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
-import styles from './selection.module.css';
-import GoBackIcon from '../../public/goback-icon.svg';
-import SearchIcon from '../../public/search-icon.svg';
-import CheckmarkIcon from '../../public/checkmark-icon.svg';
-import Location from '../../public/location-icon.svg' 
+import { useContext } from "react";
+import { CityContext } from "../../context/CityContext";
+import styles from '../../styles/selection.module.css';
+import GoBackIcon from '../../../public/goback-icon.svg';
+import SearchIcon from '../../../public/search-icon.svg';
+import CheckmarkIcon from '../../../public/checkmark-icon.svg';
+import Location from '../../../public/location-icon.svg';
 
 interface CityData {
   city: string;
@@ -19,8 +20,10 @@ interface CityData {
 
 export default function CitySelection() {
   const [cities, setCities] = useState<CityData[]>([]);
-  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  // const [localSelectedCity, setLocalSelectedCity] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const router = useRouter(); 
+  const { selectedCity, setSelectedCity } = useContext(CityContext);
 
   useEffect(() => {
     async function fetchCities() {
@@ -36,6 +39,8 @@ export default function CitySelection() {
 
   const handleCitySelect = (cityData: CityData) => {
     setSelectedCity(cityData.city);
+    console.log('Selected City:', cityData.city); 
+    router.replace(`/?city=${cityData.city}`);
   };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -49,9 +54,9 @@ export default function CitySelection() {
   return (
     <div className={styles.form}>
       <div className={styles.container}>
-        <div className={styles.goBack}>        
+        <div className={styles.goBack}>
           <Link href="/" >
-            <GoBackIcon className={styles.backBtn}/>
+            <GoBackIcon className={styles.backBtn} />
           </Link>
         </div>
         <div className={styles.searchBar}>
