@@ -1,7 +1,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
-import { CityProvider } from './context/CityContext'; // Импортируйте CityProvider
+import { CityProvider } from './context/CityContext'; 
 
 export const metadata: Metadata = {
   title: "Create Next App",

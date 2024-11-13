@@ -1,0 +1,165 @@
+.secondBlock{
+    background-color: #000000;
+    color: #ffff;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+.datesContainer{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    background-color: #131313;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 19.5px;
+    color:#757575
+}
+
+.applyBtn{
+  width: 100%;
+  padding: 10px;
+  background-color: #006BE6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.dateModalOverlay {    
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+  }
+  
+
+  .dateModal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    z-index: 2; 
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);    
+    transform: translateY(100%);
+    animation: slideUp 0.3s forwards;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .blurred {
+    filter: blur(1px);
+    transition: filter 0.3s ease-in-out; 
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;  
+    background-color: #131313; 
+    width: 320px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding:24px;
+  }
+  
+   .header{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-bottom: 20px; 
+    background-color: #131313;
+  }
+  
+  .prevNav, .nextNav{
+    background: none;
+    border: none;
+    padding:0;
+    display: flex;
+    align-items: center;
+  }
+  .nextNav{
+    rotate: 180deg;
+    margin-left: 42px;
+  }
+  
+  .prevNav{
+    margin-right: 42px;
+  }
+  
+  .dayPicker{
+    --rdp-accent-color:#006BE6; 
+    --rdp-accent-background-color:#183658;
+    --rdp-cell-size: 40px; 
+    margin-bottom: 20px;
+    background-color: #131313;
+  }
+
+  .bookingLabel{
+    padding:24px;
+  }
+   
+  .flexibleContainer {
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    margin-top: 16px; 
+    width: 100%; 
+    margin: 31px auto 56px 24px;
+  }
+  
+   
+  .flexibleContainer input {
+    margin-left: 8px;    
+    background: none;
+    border: solid 1.5px #585858;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  
+
+  @media (min-width: 1024px) {
+
+    .secondBlock{
+      max-width: 768px;
+    }
+    .dateModalOverlay {
+      justify-content: center;
+      align-items: center;
+  }
+
+  .dateModal {
+      position: static; 
+      transform: none; 
+      max-width: 768px;
+      margin: 0 auto; 
+      border-radius: 16px;
+  }
+
+  .calendar{
+    width: 450px;
+  }
+}

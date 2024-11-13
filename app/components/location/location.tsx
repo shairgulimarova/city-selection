@@ -5,14 +5,21 @@ import styles from "../../styles/location.module.css";
 import Checkmark from "../../../public/checkmark-icon.svg";
 
 interface LocationProps {
-  isModalOpen: boolean;  // Указываем, что isModalOpen имеет тип boolean
+  isTypeModalOpen: boolean;
+  isDateModalOpen: boolean;
+  isResidentsModalOpen: boolean;
 }
 
-export default function Location({ isModalOpen }: LocationProps) {
+const Location: React.FC<LocationProps> = ({ isTypeModalOpen, isDateModalOpen, isResidentsModalOpen }) => {
+ 
+
   const { selectedCity } = useContext(CityContext);
+  const isBlurred = isTypeModalOpen || isDateModalOpen || isResidentsModalOpen;
+
+  console.log("Location isBlurred:", isBlurred);
 
   return (
-    <div className={`${styles.firstBlock} ${isModalOpen ? styles.blurred : ''}`}>
+    <div className={`${styles.firstBlock} ${isBlurred ? styles.blurred : ''}`}>
       <p className={styles.location}>Location</p>
       <div className={styles.locationContainer}>
         <Link href="/city-selection" className={styles.locationName}>
@@ -27,3 +34,4 @@ export default function Location({ isModalOpen }: LocationProps) {
     </div>
   );
 }
+export default Location;

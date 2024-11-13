@@ -1,0 +1,113 @@
+.secondBlock{
+    background-color: #000000;
+    color: #ffff;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+ .residentsContainer{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    background-color: #131313;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 19.5px;
+    color:#757575
+}
+
+.applyBtn{
+  width: 100%;
+  padding: 10px;
+  background-color: #006BE6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.residentsModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+}
+
+.residentsModal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  border-radius: 16px 16px 0 0;
+  padding: 20px;
+  z-index: 2;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  animation: slideUp 0.3s forwards;
+}
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .blurred {
+    filter: blur(1px);
+    transition: filter 0.3s ease-in-out; 
+}
+
+  .counter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #131313;
+    padding:20px;
+    margin:24px;
+  }
+
+  .counter span:first-child{
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .counter button{
+    background: none;
+    border: none;
+    color: #ffff;
+    margin: 0 10px;
+  }
+
+   
+
+  @media (min-width: 1024px) {
+
+    .secondBlock{
+      max-width: 768px;
+    }
+    .residentsModalOverlay {
+      justify-content: center;
+      align-items: center;
+  }
+
+  .residentsModal {
+      position: static; 
+      transform: none; 
+      max-width: 768px;
+      margin: 0 auto; 
+      border-radius: 16px;
+  }
+}
